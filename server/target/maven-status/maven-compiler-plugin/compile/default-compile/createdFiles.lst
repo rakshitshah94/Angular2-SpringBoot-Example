@@ -1,0 +1,3 @@
+net\mzouabi\ng2\server\model\QPerson.class
+net\mzouabi\ng2\server\model\QAbstractEntity.class
+net\mzouabi\ng2\server\mapper\PersonMapperImpl.class
