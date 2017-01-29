@@ -42,8 +42,10 @@
 
         <div class="row">
           <div class="form-actions floatRight">
-            <input type="button"  value="Add" (click)="create1(person)" class="btn btn-primary btn-sm" ngDisabled="myForm.$invalid">
-            <button type="reset"  class="btn btn-warning btn-sm" ngDisabled="myForm.$pristine">Reset Form</button>
+
+           <!-- <input type="button"  [(ngModel)]="updateOrAdd:emit({text:message})" (click)="create1(person)" class="btn btn-primary btn-sm" >-->
+              <button type="button"  (click)="create1(person)" class="btn btn-primary btn-sm" ngDisabled="myForm.$invalid">{{message}}</button>
+              <button type="button"  (click)="update.emit({text:message})" class="btn btn-warning btn-sm" ngDisabled="myForm.$pristine">Reset Form</button>
           </div>
         </div>
     </div>

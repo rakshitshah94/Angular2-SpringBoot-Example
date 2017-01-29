@@ -56,6 +56,7 @@ export class PersonService {
                 return res.json();
             }).publish().refCount();
     }
+
     private extractData(res: Response) {
         let body = res.json();
         return body || {};

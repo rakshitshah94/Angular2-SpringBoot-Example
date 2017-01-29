@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {Response} from '@angular/http';
 import * as Rx from 'rxjs/Rx';
@@ -35,13 +35,14 @@ export class PersonComponent implements OnInit {
             hideLoading();
         });
     }
-
+    @Input() message;
     edit(person){
         let observable : Rx.Observable<void> = this.personService.updatePerson(person.id);
         showLoading();
         observable.subscribe(doNothing, hideLoading, ()=>{
             this.router.navigate(['']);
             hideLoading();
+            this.message="Update";
         });
     }
 
