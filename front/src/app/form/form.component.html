@@ -1,0 +1,53 @@
+<div class="col-md-12 tablecontainer">
+  <div class="panel panel-default">
+    <div class="panel-heading"><span class="lead">User Registration Form </span></div>
+    <div class="formcontainer">
+        <input type="hidden" ngModel="person.id"/>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-lable">FirstName</label>
+            <div class="col-md-7">
+              <input type="text"  #firstname name="firstname" class="firstname form-control input-sm" placeholder="Enter your firstname" required ng-minlength="3" autofocus/>
+              <div class="has-error" (show)="myForm.$dirty">
+                <span (show)="myForm.firstname.$error.required">This is a required field</span>
+                <span (show)="myForm.firstname.$error.minlength">Minimum length required is 3</span>
+                <span (show)="myForm.firstname.$invalid">This field is invalid </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-lable" >LastName</label>
+            <div class="col-md-7">
+              <input type="text"  #lastname class="form-control input-sm" placeholder="Enter your lastname. [This field is validation free]"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-lable" >Age</label>
+            <div class="col-md-7">
+              <input type="number" #age name="age" class="age form-control input-sm" placeholder="Enter your age" required/>
+              <div class="has-error" (show)="myForm.$dirty">
+                <span (show)="myForm.age.$error.required">This is a required field</span>
+                <span (show)="myForm.age.$invalid">This field is invalid </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-actions floatRight">
+            <input type="button"  value="Add" (click)="create1(person)" class="btn btn-primary btn-sm" ngDisabled="myForm.$invalid">
+            <button type="reset"  class="btn btn-warning btn-sm" ngDisabled="myForm.$pristine">Reset Form</button>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+</div>

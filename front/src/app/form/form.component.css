@@ -1,0 +1,19 @@
+.firstname.ng-valid {
+    background-color: lightgreen;
+}
+.firstname.ng-dirty.ng-invalid-required {
+    background-color: red;
+}
+.firstname.ng-dirty.ng-invalid-minlength {
+    background-color: yellow;
+}
+
+.age.ng-valid {
+    background-color: lightgreen;
+}
+.age.ng-dirty.ng-invalid-required {
+    background-color: red;
+}
+.age.ng-dirty.ng-invalid-email {
+    background-color: yellow;
+}

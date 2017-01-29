@@ -1,0 +1,13 @@
+<div id="bottom" class="row">
+    <div class="col-md-12">
+        <ul class="pagination">
+            <li  [class.disabled]="page.first"><a href="#" (click)="fetchPreviousPage()">&lt; Previous</a></li>
+
+            <li *ngFor="let pageIndex of pagesIndexes" [class.disabled]="pageIndex == page.number+1 "><a (click)="fetchPageNumber(pageIndex)"  >{{pageIndex}}</a></li>
+
+            <li [class.disabled]="page.last" class="next"><a href="#"   (click)="fetchNextPage()" rel="next">Next &gt;</a></li>
+        </ul><!-- /.pagination -->
+    </div>
+</div> <!-- /#bottom -->
+
+
