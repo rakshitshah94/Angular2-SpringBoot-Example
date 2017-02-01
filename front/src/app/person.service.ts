@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Person} from './domain'
+import {Person, User} from './domain'
 import {PaginationPage, PaginationPropertySort} from './pagination';
 import {webServiceEndpoint} from './commons';
 import {Http, Response, URLSearchParams, RequestOptions, Headers} from '@angular/http';
@@ -11,7 +11,7 @@ import 'rxjs/add/operator/publish';
 export class PersonService {
 
     constructor(private http: Http) {
-
+        this.http = http;
     }
 
     findPersons(page: number, pageSize: number, sort: PaginationPropertySort): Rx.Observable<PaginationPage<Person>> {
@@ -36,27 +36,35 @@ export class PersonService {
         return this.http.delete(`${webServiceEndpoint}/person/${id}`).publish().refCount();
     }
 
-    updatePerson(id: number) : Rx.Observable<void>{
+
+
+
+    updatePerson(personClass : User) : Rx.Observable<string>{
+        console.log("RRRRRRRRRKKKK "+personClass.id + personClass.firstname + personClass.lastname+ personClass.age);
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.put(`${webServiceEndpoint}/person/${id}`,JSON.stringify(id),{
-            headers : headers}).map((res: Response) => {
-            return;
+        /*var myObjUpdate ={"id":4,"firstname":"Johnny", "age":14, "lastname":"Canada","dateOfBirth":"null" }*/
+        var myObjUpdate ={"id":personClass.id,"firstname":personClass.firstname, "age":personClass.age, "lastname":personClass.lastname,"dateOfBirth":"null" }
+        /*return this.http.post(`${webServiceEndpoint}/person/${id}`,JSON.stringify(myObjUpdate),{*/
+        return this.http.post(`${webServiceEndpoint}/person/${personClass.id}`,JSON.stringify(myObjUpdate),{
+            headers : headers
+        }).map((res: Response) => {
+            return res.json();
         }).publish().refCount();
     }
 
-    createPerson(person : Person){
+    createPerson(personClass : User): Rx.Observable<string>{
+        console.log("<<<<<<<<<<<<<<<<<<< person json : "+ personClass);
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-
-        return this.http.post(`${webServiceEndpoint}/person/`, JSON.stringify(person), {
+        /*var myObj = { "firstname":"John", "age":31, "lastname":"New York","dateOfBirth":"null" };*/
+        var myObj = { "firstname":personClass.firstname, "age":personClass.age, "lastname":personClass.lastname,"dateOfBirth":"null" };
+        return this.http.post(`${webServiceEndpoint}/person`, JSON.stringify(myObj), {
             headers: headers
-        })
-            .map((res: Response) => {
+        }).map((res: Response) => {
                 return res.json();
             }).publish().refCount();
     }
-
     private extractData(res: Response) {
         let body = res.json();
         return body || {};

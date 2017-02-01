@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {Response} from '@angular/http';
 import * as Rx from 'rxjs/Rx';
@@ -6,6 +6,7 @@ import * as Rx from 'rxjs/Rx';
 import {PersonService} from '../person.service';
 import {Person} from '../domain';
 import {showLoading, hideLoading, doNothing} from '../commons'
+import {FormComponent} from "../form/form.component";
 
 @Component({
     selector: 'app-person',
@@ -15,6 +16,9 @@ import {showLoading, hideLoading, doNothing} from '../commons'
 export class PersonComponent implements OnInit {
 
     person: Person;
+
+    @Input() formComponentRef : FormComponent;
+
 
     constructor(private router: Router, private route: ActivatedRoute, private personService: PersonService) {
 
@@ -35,16 +39,27 @@ export class PersonComponent implements OnInit {
             hideLoading();
         });
     }
-    @Input() message;
-    edit(person){
-        let observable : Rx.Observable<void> = this.personService.updatePerson(person.id);
+
+
+    editpopup(person){//popup-modal
+        console.log("person method called ");
+        console.log("person id 222: "+ person.id);
+        console.log("person fn 222: "+person.firstname);
+        console.log("person ln 2222: "+person.lastname);
+        console.log("person age 222: "+person.age);
+
+        //this.formComponentRef.methodToFetchDataFromOtherComponent(person);
+        //this.formComponentRef.methodToFetchDataFromOtherComponent(person);
+        /* let observable : Rx.Observable<void> = this.personService.updatePerson(person.id);
         showLoading();
         observable.subscribe(doNothing, hideLoading, ()=>{
             this.router.navigate(['']);
             hideLoading();
-            this.message="Update";
-        });
+        });*/
+
     }
+
+
 
     back() {
         history.back();

@@ -24,7 +24,7 @@
     <div class="col-md-12">
         <a (click)="back()" class="btn btn-primary">Back</a>
 
-        <a href="#" class="btn btn-default" data-toggle="modal" data-target="#edit-modal">Edit</a>
+        <!--<a href="#" class="btn btn-default" data-toggle="modal" data-target="#edit-modal">Edit</a>-->
         <a href="#" class="btn btn-default" data-toggle="modal" data-target="#delete-modal">Delete</a>
     </div>
 </div>
@@ -41,7 +41,7 @@
                     Do you want to edit this item ?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" (click)="edit(person)" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                    <button type="button" (click)="editpopup(person)" class="btn btn-primary" data-dismiss="modal">Yes</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal" data-dismiss="modal">No</button>
                 </div>
             </div>

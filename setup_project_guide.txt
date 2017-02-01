@@ -1,0 +1,30 @@
+Download Both rar > front & server
+---------------------
+Server.rar
+extract it
+
+Import in eclipse as maven project
+After import , right click on project > run as > maven install 
+after that , right click on project > run as > maven test
+
+you can see build success!
+
+open ServerApplication.java > run as > java application
+-------------------
+
+
+----------------
+front.rar
+extract it
+
+open node.js command prompt
+go to path where front is located 
+
+COMMAND : 
+cd <to_the_path>  , e:\project\...\front
+npm install
+ng serve - to run front
+
+
+
+----------------

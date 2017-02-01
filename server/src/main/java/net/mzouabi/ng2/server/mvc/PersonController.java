@@ -37,14 +37,17 @@ public class PersonController {
         return new ResponseEntity<>(person, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void createPerson(@RequestBody PersonDTO personDTO) {
+    @RequestMapping(value = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String createPerson(@RequestBody PersonDTO personDTO) {
+    	System.out.println("Person create " + personDTO.toString());
         personService.savePerson(personDTO);
+        return "{'status:'success'}";
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void updatePerson(@RequestBody PersonDTO personDTO) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String updatePerson(@RequestBody PersonDTO personDTO) {
         personService.updatePerson(personDTO);
+        return "{'status:'success'}";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)

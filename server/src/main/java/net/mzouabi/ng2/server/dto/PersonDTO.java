@@ -46,4 +46,12 @@ public class PersonDTO extends AbstractDTO {
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
+	@Override
+	public String toString() {
+		return "PersonDTO [firstname=" + firstname + ", lastname=" + lastname + ", age=" + age + ", dateOfBirth="
+				+ dateOfBirth + "]";
+	}
+    
+    
 }
