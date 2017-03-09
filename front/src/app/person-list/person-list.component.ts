@@ -23,7 +23,8 @@ export class PersonListComponent implements OnInit, Table<Person> {
     personPage: PaginationPage<Person>;
     personClass: User = new User();
     self: Table<Person>;
-
+    @Input() tempmsg ;
+    @Output() updateVals = new EventEmitter();
 
     constructor(private router: Router, private route: ActivatedRoute, private personService: PersonService) {
     }
@@ -54,20 +55,13 @@ export class PersonListComponent implements OnInit, Table<Person> {
         let observable: Rx.Observable<Response> = this.personService.deletePerson(person.id);
         showLoading();
         observable.switchMap(() => {
-            return this.fetchPage(0, 10, null);
+            return this.fetchPage(0, 5, null);
         }).subscribe(doNothing, hideLoading, hideLoading);
     }
 
     editpopup(user : User){//popup-modal
-        console.log("person-list method called "+ user.firstname);
-        this.personClass.id = user.id;
-        this.personClass.firstname = user.firstname;
-        this.personClass.lastname = user.lastname;
-        this.personClass.age = user.age;
-        //methodToFetchDataFromOtherComponent(person);
-        console.log(""+this.personClass.id , this.personClass.firstname, this.personClass.lastname ,this.personClass.age);
-        //this.formComponentRef.passingValuesEdit(this.personClass.id , this.personClass.firstname, this.personClass.lastname ,this.personClass.age);
-        this.formCompRef.passingValuesEdit(this.personClass.id , this.personClass.firstname, this.personClass.lastname ,this.personClass.age);
+        console.log(""+user.id , user.firstname, user.lastname ,user.age);
+        this.formCompRef.passingValuesEdit(user);
     }
 
 

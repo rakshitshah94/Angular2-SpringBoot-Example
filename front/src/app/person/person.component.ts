@@ -43,10 +43,7 @@ export class PersonComponent implements OnInit {
 
     editpopup(person){//popup-modal
         console.log("person method called ");
-        console.log("person id 222: "+ person.id);
-        console.log("person fn 222: "+person.firstname);
-        console.log("person ln 2222: "+person.lastname);
-        console.log("person age 222: "+person.age);
+        //Add code if you want edit functionality in person component 
 
         //this.formComponentRef.methodToFetchDataFromOtherComponent(person);
         //this.formComponentRef.methodToFetchDataFromOtherComponent(person);

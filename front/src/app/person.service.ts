@@ -36,16 +36,19 @@ export class PersonService {
         return this.http.delete(`${webServiceEndpoint}/person/${id}`).publish().refCount();
     }
 
-
+    getValue(personClass : User) : Rx.Observable<Response>{
+        var personClassObj = {"id":personClass.id,"firstname":personClass.firstname, "age":personClass.age, "lastname":personClass.lastname,"dateOfBirth":"null" }
+        return this.http.get(`${webServiceEndpoint}/person/${personClass.id}`);
+    }
 
 
     updatePerson(personClass : User) : Rx.Observable<string>{
-        console.log("RRRRRRRRRKKKK "+personClass.id + personClass.firstname + personClass.lastname+ personClass.age);
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        /*var myObjUpdate ={"id":4,"firstname":"Johnny", "age":14, "lastname":"Canada","dateOfBirth":"null" }*/
+        headers.append("Cache-Control", "no-cache");
+        headers.append("Cache-Control", "no-store");
+        headers.append("If-Modified-Since", "Mon, 26 Jul 1997 05:00:00 GMT");
         var myObjUpdate ={"id":personClass.id,"firstname":personClass.firstname, "age":personClass.age, "lastname":personClass.lastname,"dateOfBirth":"null" }
-        /*return this.http.post(`${webServiceEndpoint}/person/${id}`,JSON.stringify(myObjUpdate),{*/
         return this.http.post(`${webServiceEndpoint}/person/${personClass.id}`,JSON.stringify(myObjUpdate),{
             headers : headers
         }).map((res: Response) => {
@@ -54,10 +57,11 @@ export class PersonService {
     }
 
     createPerson(personClass : User): Rx.Observable<string>{
-        console.log("<<<<<<<<<<<<<<<<<<< person json : "+ personClass);
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        /*var myObj = { "firstname":"John", "age":31, "lastname":"New York","dateOfBirth":"null" };*/
+        headers.append("Cache-Control", "no-cache");
+        headers.append("Cache-Control", "no-store");
+        headers.append("If-Modified-Since", "Mon, 26 Jul 1997 05:00:00 GMT");
         var myObj = { "firstname":personClass.firstname, "age":personClass.age, "lastname":personClass.lastname,"dateOfBirth":"null" };
         return this.http.post(`${webServiceEndpoint}/person`, JSON.stringify(myObj), {
             headers: headers
