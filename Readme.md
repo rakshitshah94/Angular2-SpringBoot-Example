@@ -65,3 +65,5 @@ Here you can see following things.<br>
 <p>This example is made with help of <a href="https://github.com/zouabimourad/angular2-spring">zouabimourad - SpringBoot and Angular 2</a> 
 and <a href="http://websystique.com/springmvc/spring-mvc-4-and-spring-security-4-integration-example/">websystique | UI made in angular 1</a></p>
 
+<h2>How to Contribute</h2>
+If you like this Example and you want help and keep this project successful then contribute your time to improve the source code and let other know about Angular 2. Because this build for newbies to undestand the flow of CRUD with Angular2-Spring.
