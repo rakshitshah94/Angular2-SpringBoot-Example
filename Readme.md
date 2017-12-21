@@ -62,6 +62,44 @@ Here you can see following things.<br>
 <img src ="https://3.bp.blogspot.com/-b9yRyD0r9Ec/WMGqxb2pz0I/AAAAAAAAJn8/1EE_PkkMzoQBuGVbEUpcjERL5fxPMsc4ACLcB/s1600/SpringAngular2-3.png" alt="Edit person"
 <center><label>Edit person</label></center><br>
 
+<h3>Guide to Build and Run Project</h3>
+When you Import this project, You need to fulfill the requirements.
+
+**If you have imported project in eclipse, Follow this steps to build project:**
+1. Right click on project > Properties > **Java Build path**
+2. Change your **JDK if 1.8 is not set.**
+3. You need **Maven 3+** configured in your system (or You can download Maven 3+ from [here](https://maven.apache.org/download.cgi))
+4. Once you setup with all this things,
+Right click on project > Run as > Maven clean (you can directly do this using **mvn clean** command in cmd at specific project dir)
+5. Again right click on project, Find **Maven >** in options, Click on **Update project**
+check **Update snapshots forcefully** option and press ok.
+6. Now you can refresh your project. Run clean and build project.
+7. **Main Important step >** Right click on project > Run as  > **Maven Install**
+ This step will install required dependency specified in [pom.xml](https://github.com/rakshitshah94/Angular2-SpringBoot-Example/blob/master/server/pom.xml) file
+
+Now as per your question, **QPerson is missing**
+Once you follow above steps it will be generated automatically in 
+../Project_Dir/target/net/../server/model/QPerson.java
+
+**You may have question that how this was generated ?**
+If you observed libraries (Dependencies) in pom.xml ,
+```
+<dependency>
+	<groupId>com.h2database</groupId>
+	<artifactId>h2</artifactId>
+	<scope>runtime</scope>
+</dependency>
+```
+You need to know more about [H2 Database](https://en.wikipedia.org/wiki/H2_(DBMS)). 
+H2 is a relational database management system written in Java. It can be embedded in Java applications or run in the client-server mode.
+- Very fast, open source, JDBC API
+- Embedded and server modes; in-memory databases (Simple meaning => data will not persist on the disk)
+- lightweight Java database
+- It can be embedded in Java applications or run in the client-server mode
+Whatever things (Objects, String or anything) you want to store in **H2** you can.
+In this example, whatever values you want to store (CRUD operations), it will be retain in H2 Database till you shutdown your tomcat.(or other servers). 
+Hope so you will get idea about this things. 
+<hr>
 <h3 style="color:red" >References:</h3>
 <p>This example is made with help of <a href="https://github.com/zouabimourad/angular2-spring">zouabimourad - SpringBoot and Angular 2</a> 
 and <a href="http://websystique.com/springmvc/spring-mvc-4-and-spring-security-4-integration-example/">websystique | UI made in angular 1</a></p>
