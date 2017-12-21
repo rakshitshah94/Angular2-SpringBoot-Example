@@ -43,6 +43,7 @@ Here you can see following things.<br>
 
 <h2> Backend </h2>
 <ul> 
+<li><code>mvn clean install</code> to clean if exists files and install packages</li>
 <li><code>mvn spring-boot:run</code>  to start spring boot</li>
 </ul>
 
